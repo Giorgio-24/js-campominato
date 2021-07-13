@@ -22,16 +22,16 @@ do {
 
 if (choosenDifficulty == difficulties[0]) {
     totalNumbers = 100;
-    bombsNumber = 16;
+    bombsNumber = 15;
 } else if (choosenDifficulty == difficulties[1]) {
     totalNumbers = 80;
-    bombsNumber = 21;
+    bombsNumber = 20;
 } else if (choosenDifficulty == difficulties[2]) {
     totalNumbers = 50;
-    bombsNumber = 26;
+    bombsNumber = 25;
 } else if (choosenDifficulty == difficulties[3]) {
     totalNumbers = 35;
-    bombsNumber = 31;
+    bombsNumber = 30;
 }
 
 
