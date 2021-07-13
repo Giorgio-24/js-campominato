@@ -10,14 +10,12 @@ Quando la partita termina, comunichiamo all'utente il suo punteggio.
 BONUS: (da fare solo se funziona tutto il resto) */
 
 const bombs = [];
-console.log(bombs);
 
 const userNumbers = [];
-console.log(userNumbers);
 
 const bombsNumber = 16;
 
-var difficulties = ['easy', 'medium', 'hard']
+var difficulties = ['easy', 'medium', 'hard', 'insane'/*EASTER EGG SECRET MODE*/]
 
 var choosenDifficulty;
 
@@ -36,20 +34,20 @@ if (choosenDifficulty == difficulties[0]) {
     totalNumbers = 80;
 } else if (choosenDifficulty == difficulties[2]) {
     totalNumbers = 50;
+} else if (choosenDifficulty == difficulties[3]) {
+    totalNumbers = 20;
 }
-
-
-
 
 var i = 0;
 
-
-
-do {//^BOMBS GENERATOR.
-    var randomBombsNumber = Math.floor(Math.random() * (totalNumbers - 1) + 1);
-    bombs.push(randomBombsNumber);
-    i++;
-} while (i < bombsNumber || !(bombs.includes(randomBombsNumber)));
+for (var v = 0; v < bombsNumber; v++) {//^BOMBS GENERATOR.
+    var randomBombsNumber = Math.floor(Math.random() * (totalNumbers) + 1);
+    if (!(bombs.includes(randomBombsNumber))) {
+        bombs.push(randomBombsNumber);
+    } else {
+        v--;
+    }
+}
 
 var j = 0;//?USER NUMBER COUNTER.
 
@@ -65,8 +63,8 @@ do {//^USER NUMBERS.
     }
 
     j++;
-} while (j < (totalNumbers - 16) && !(bombs.includes(randomUserNumber)));
+} while (j < (totalNumbers - bombsNumber) && !(bombs.includes(randomUserNumber)));
 
-console.log(userNumbers);
-console.log(bombs);
-console.log('Il punteggio finale è di: ' + j + '/' + totalNumbers + ' punti.');
+console.log("Numeri inseriti dall'utente: " + userNumbers);
+console.log('Numeri delle bombe: ' + bombs.sort());
+console.log('Il punteggio finale è di: ' + j + '/' + (totalNumbers - bombsNumber) + ' punti.');
