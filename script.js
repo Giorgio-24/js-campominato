@@ -60,4 +60,5 @@ do {
 //?RESULTS.
 console.log("Numeri inseriti dall'utente: " + userNumbersList);
 console.log('Numeri delle bombe: ' + bombs.sort());
+console.log('Il numero che ti ha fatto perdere è: ' + chosenUserNumber);
 console.log('Il punteggio finale è di: ' + (j - 1) + '/' + (totalNumbers - bombsNumber) + ' punti.');
