@@ -1,17 +1,17 @@
 //=VARIABLES.
 const bombs = [];
 
-const userNumbers = [];
+const userNumbersList = [];
 
 const bombsNumber = 16;
 
-var difficulties = ['easy', 'medium', 'hard', 'insane'/*EASTER EGG SECRET MODE*/]
+const difficulties = ['easy', 'medium', 'hard', 'insane'/*EASTER EGG SECRET MODE*/]
 
-var choosenDifficulty;
+let choosenDifficulty;
 
-var totalNumbers;
+let totalNumbers;
 
-var j = 0;//^USER NUMBER COUNTER.
+let j = 0;//^USER NUMBER COUNTER.
 
 
 //=GAME SETTINGS.
@@ -32,8 +32,8 @@ if (choosenDifficulty == difficulties[0]) {
 
 
 //?BOMBS GENERATOR.
-for (var v = 0; v < bombsNumber; v++) {
-    var randomBombsNumber = Math.floor(Math.random() * (totalNumbers) + 1);
+for (let v = 0; v < bombsNumber; v++) {
+    const randomBombsNumber = Math.floor(Math.random() * (totalNumbers) + 1);
     if (!(bombs.includes(randomBombsNumber))) {
         bombs.push(randomBombsNumber);
     } else {
@@ -43,11 +43,11 @@ for (var v = 0; v < bombsNumber; v++) {
 
 //?USER NUMBERS.
 do {
-    var randomUserNumber = parseInt(prompt('Inserisci un numero da 1 a ' + totalNumbers + ', attento a non ripeterti.'));
-    if (!(userNumbers.includes(randomUserNumber)) && !(isNaN(randomUserNumber))
-        && !(randomUserNumber < 1) && !(randomUserNumber > totalNumbers)) {
+    var chosenUserNumber = parseInt(prompt('Inserisci un numero da 1 a ' + totalNumbers + ', attento a non ripeterti.'));
+    if (!(userNumbersList.includes(chosenUserNumber)) && !(isNaN(chosenUserNumber))
+        && !(chosenUserNumber < 1) && !(chosenUserNumber > totalNumbers)) {
         //""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""//
-        userNumbers.push(randomUserNumber);
+        userNumbersList.push(chosenUserNumber);
     } else {
         alert('ATTENZIONE!! Inserisci un valore valido.');
         j--;//^ COSI IL CONTATORE NON AUMENTA; SENNO' PER VINCERE BASTEREBBE INSERIRE
@@ -55,9 +55,9 @@ do {
     }
 
     j++;
-} while (j < (totalNumbers - bombsNumber) && !(bombs.includes(randomUserNumber)));
+} while (j < (totalNumbers - bombsNumber) && !(bombs.includes(chosenUserNumber)));
 
 //?RESULTS.
-console.log("Numeri inseriti dall'utente: " + userNumbers);
+console.log("Numeri inseriti dall'utente: " + userNumbersList);
 console.log('Numeri delle bombe: ' + bombs.sort());
 console.log('Il punteggio finale è di: ' + j + '/' + (totalNumbers - bombsNumber) + ' punti.');
