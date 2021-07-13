@@ -3,7 +3,7 @@ const bombs = [];
 
 const userNumbersList = [];
 
-const bombsNumber = 16;
+let bombsNumber;
 
 const difficulties = ['easy', 'medium', 'hard', 'insane'/*EASTER EGG SECRET MODE*/]
 
@@ -11,7 +11,7 @@ let choosenDifficulty;
 
 let totalNumbers;
 
-let j = 0;//^USER NUMBER COUNTER.
+let j = 0;//^USER NUMBER COUNTER AND ALSO SCORE COUNTER.
 
 
 //=GAME SETTINGS.
@@ -22,12 +22,16 @@ do {
 
 if (choosenDifficulty == difficulties[0]) {
     totalNumbers = 100;
+    bombsNumber = 16;
 } else if (choosenDifficulty == difficulties[1]) {
     totalNumbers = 80;
+    bombsNumber = 21;
 } else if (choosenDifficulty == difficulties[2]) {
     totalNumbers = 50;
+    bombsNumber = 26;
 } else if (choosenDifficulty == difficulties[3]) {
-    totalNumbers = 20;
+    totalNumbers = 35;
+    bombsNumber = 31;
 }
 
 
