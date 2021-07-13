@@ -29,9 +29,19 @@ do {//^BOMBS GENERATOR.
 
 var j = 0;
 
+
+
 do {//^USER NUMBERS.
-    var randomUserNumber = parseInt(prompt('Inserisci un numero da 1 a 100, attento a non ripeterti.'))
-    userNumbers.push(randomUserNumber);
+    var randomUserNumber = parseInt(prompt('Inserisci un numero da 1 a 100, attento a non ripeterti.'));
+    if (!(userNumbers.includes(randomUserNumber)) && !(isNaN(randomUserNumber))
+        && !(randomUserNumber < 1) && !(randomUserNumber > 100)) {
+        //""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""//
+        userNumbers.push(randomUserNumber);
+    } else {
+        alert('ATTENZIONE!! Inserisci un valore valido.');
+        j--;//?COSI IL CONTATORE NON AUMENTA; SENNO' PER VINCERE BASTEREBBE INSERIRE SEMPRE LO STESSO NUMERO CONSAPEVOLMENTE.
+    }
+
     j++;
 } while (j < 100 && !(bombs.includes(randomUserNumber)));
 
