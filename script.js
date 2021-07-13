@@ -17,24 +17,46 @@ console.log(userNumbers);
 
 const bombsNumber = 16;
 
+var difficulties = ['easy', 'medium', 'hard']
+
+var choosenDifficulty;
+
+var x = 0;
+
+var totalNumbers;
+
+do {
+    choosenDifficulty = prompt('Scegli una difficoltà: "easy", "medium", "hard".')
+} while (!(difficulties.includes(choosenDifficulty)));
+
+
+if (choosenDifficulty == difficulties[0]) {
+    totalNumbers = 100;
+} else if (choosenDifficulty == difficulties[1]) {
+    totalNumbers = 80;
+} else if (choosenDifficulty == difficulties[2]) {
+    totalNumbers = 50;
+}
+
+
+
+
 var i = 0;
 
 
 
 do {//^BOMBS GENERATOR.
-    var randomBombsNumber = Math.floor(Math.random() * (100 - 1) + 1);
+    var randomBombsNumber = Math.floor(Math.random() * (totalNumbers - 1) + 1);
     bombs.push(randomBombsNumber);
     i++;
 } while (i < bombsNumber || !(bombs.includes(randomBombsNumber)));
 
-var j = 0;
-
-
+var j = 0;//?USER NUMBER COUNTER.
 
 do {//^USER NUMBERS.
-    var randomUserNumber = parseInt(prompt('Inserisci un numero da 1 a 100, attento a non ripeterti.'));
+    var randomUserNumber = parseInt(prompt('Inserisci un numero da 1 a ' + totalNumbers + ', attento a non ripeterti.'));
     if (!(userNumbers.includes(randomUserNumber)) && !(isNaN(randomUserNumber))
-        && !(randomUserNumber < 1) && !(randomUserNumber > 100)) {
+        && !(randomUserNumber < 1) && !(randomUserNumber > totalNumbers)) {
         //""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""//
         userNumbers.push(randomUserNumber);
     } else {
@@ -43,34 +65,8 @@ do {//^USER NUMBERS.
     }
 
     j++;
-} while (j < 100 && !(bombs.includes(randomUserNumber)));
-
-
-
+} while (j < (totalNumbers - 16) && !(bombs.includes(randomUserNumber)));
 
 console.log(userNumbers);
-console.log(bombs);/* 
-
-function generateUniqueRandom(maxNr) {
-    //Generate random number
-    let random = (Math.random() * maxNr).toFixed();
-    if (!haveIt.includes(random)) {
-        haveIt.push(random);
-        return random;
-
-        //Coerce to number by boxing
-        random = Number(random);
-
-        if (!haveIt.includes(random)) {
-            haveIt.push(random);
-            return random;
-        } else {
-            if (haveIt.length < maxNr) {
-                //Recursively generate number
-                return generateUniqueRandom(maxNr);
-            } else {
-                console.log('No more numbers available.')
-                return false;
-            }
-        }
-    } */
+console.log(bombs);
+console.log('Il punteggio finale è di: ' + j + '/' + totalNumbers + ' punti.');
