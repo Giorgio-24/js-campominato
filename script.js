@@ -52,13 +52,11 @@ do {
         && !(chosenUserNumber < 1) && !(chosenUserNumber > totalNumbers)) {
         //""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""//
         userNumbersList.push(chosenUserNumber);
+        userScore++;//^IL PUNTEGGIO AUMENTA.
     } else {
         alert('ATTENZIONE!! Inserisci un valore valido.');
-        userScore--;//^ COSI IL CONTATORE NON AUMENTA; SENNO' PER VINCERE BASTEREBBE INSERIRE
-        //^ SEMPRE LO STESSO NUMERO CONSAPEVOLMENTE.
     }
 
-    userScore++;
 } while (userScore < (totalNumbers - bombsNumber) && !(bombs.includes(chosenUserNumber)));
 
 //?RESULTS.
