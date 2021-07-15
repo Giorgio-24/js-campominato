@@ -1,4 +1,4 @@
-//=VARIABLES.
+//=VARIABLES AND FUNCTIONS.
 const bombs = [];
 
 const userNumbersList = [];
@@ -12,6 +12,14 @@ let choosenDifficulty;
 let totalNumbers;
 
 let j = 0;//^USER NUMBER COUNTER AND ALSO SCORE COUNTER.
+
+function getRandomNumber(min, max) {//?RANDOM NUMBER GENERATOR.
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+
+
 
 
 //=GAME SETTINGS.
@@ -34,14 +42,11 @@ if (choosenDifficulty == difficulties[0]) {
     bombsNumber = 30;
 }
 
-
 //?BOMBS GENERATOR.
-for (let v = 0; v < bombsNumber; v++) {
-    const randomBombsNumber = Math.floor(Math.random() * (totalNumbers) + 1);
+while (bombs.length < bombsNumber) {
+    var randomBombsNumber = getRandomNumber(1, totalNumbers)
     if (!(bombs.includes(randomBombsNumber))) {
-        bombs.push(randomBombsNumber);
-    } else {
-        v--;
+        bombs.push(randomBombsNumber)
     }
 }
 
@@ -60,6 +65,10 @@ do {
 
     j++;
 } while (j < (totalNumbers - bombsNumber) && !(bombs.includes(chosenUserNumber)));
+
+if (bombs.includes(chosenUserNumber)) {
+    alert('Oh no! Hai preso una bomba ed hai perso.')
+}
 
 //?RESULTS.
 console.log("Numeri inseriti dall'utente: " + userNumbersList);
